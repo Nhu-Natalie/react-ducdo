@@ -1,25 +1,48 @@
-import logo from "./logo.svg";
 import "./App.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-// // import tất cả
-// import * as constantAll from "./constants/constant";
+let stateValue; // vị trí khai báo global
 
-// console.log(constantAll);
-// // Lấy biến name
-// console.log(constantAll.name);
+function useState(initialState) {
+  if (stateValue === undefined) stateValue = initialState;
+  console.log("stateValue: ", stateValue);
 
-// Dùng DESTRUCTURING
-import { name, job } from "./constants/constant";
-console.log(name);
-// Lấy biến name
-console.log(job);
+  function setValue(value) {
+    stateValue = value;
+
+    // Sau khi state thay đổi render lại
+    ReactDOM.createRoot(document.getElementById("root")).render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+  }
+
+  return [stateValue, setValue];
+}
 
 function App() {
+  const [counter, setCounter] = useState(1);
+
+  const handleIncrement = function () {
+    setCounter(counter + 1);
+  };
+
+  const handleDecrement = function () {
+    setCounter(counter - 1);
+  };
+
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <h1>Counter {counter}</h1>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
     </div>
   );
 }
 
 export default App;
+
+// Tạo state để quản lý counter
+// Khi state thay đổi, giao diện thay đổi
