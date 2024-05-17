@@ -1,23 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
-
-// // import tất cả
-// import * as constantAll from "./constants/constant";
-
-// console.log(constantAll);
-// // Lấy biến name
-// console.log(constantAll.name);
-
-// Dùng DESTRUCTURING
-import { name, job } from "./constants/constant";
-console.log(name);
-// Lấy biến name
-console.log(job);
+import Counter from "./component/Counter";
 
 function App() {
+  const urlImage = "https://cdn.urldecoder.org/assets/images/url-fb-en.png";
+
   return (
     <div className="App">
+      <img className="image_feature" src={urlImage} />
       <h1>Hello World</h1>
+      <Counter />
     </div>
   );
 }
