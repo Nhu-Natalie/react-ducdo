@@ -1,12 +1,16 @@
 import "./App.css";
+
+// import { useState } from "react";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 
 let stateValue; // vị trí khai báo global
 
 function useState(initialState) {
-  if (stateValue === undefined) stateValue = initialState;
-  console.log("stateValue: ", stateValue);
+  if (stateValue === undefined) {
+    stateValue = initialState;
+  }
 
   function setValue(value) {
     stateValue = value;
@@ -14,6 +18,7 @@ function useState(initialState) {
     // Sau khi state thay đổi render lại
     ReactDOM.createRoot(document.getElementById("root")).render(
       <React.StrictMode>
+        {/* Chạy lại nguyên function App bên dưới */}
         <App />
       </React.StrictMode>
     );
@@ -23,11 +28,17 @@ function useState(initialState) {
 }
 
 function App() {
+  // sử dụng DESTRUCTURING của ARRAY ko dùng của OBJECT để dễ gọi tên
   const [counter, setCounter] = useState(1);
+
+  // console.log("counter: ", counter);
+  // console.log("setCounter: ", setCounter);
 
   const handleIncrement = function () {
     setCounter(counter + 1);
   };
+
+  console.dir(handleIncrement);
 
   const handleDecrement = function () {
     setCounter(counter - 1);
