@@ -1,23 +1,23 @@
-import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
 
-// // import tất cả
-// import * as constantAll from "./constants/constant";
-
-// console.log(constantAll);
-// // Lấy biến name
-// console.log(constantAll.name);
-
-// Dùng DESTRUCTURING
-import { name, job } from "./constants/constant";
-console.log(name);
-// Lấy biến name
-console.log(job);
-
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  const formatClass = function () {
+    let classCommon = "badge p-3";
+    if (counter === 0) {
+      classCommon += " text-bg-warning";
+    } else {
+      classCommon += " text-bg-primary";
+    }
+    return classCommon;
+  };
+
   return (
     <div className="App">
       <h1>Hello World</h1>
+      <div className={formatClass()}>Primary</div>
     </div>
   );
 }
