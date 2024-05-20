@@ -1,13 +1,15 @@
 import { useState } from "react";
 import javList from "../service/jav";
 
-console.log(javList);
-
 function Jav() {
-  const [javs, setJav] = useState(javList);
+  console.log("render begin");
+  const [javs, setJavs] = useState(javList);
 
-  console.log(javs);
-
+  const handleDeleteJav = (id) => {
+    const stateJavNew = javs.filter((jav) => jav.id !== id);
+    setJavs(stateJavNew); // Rerender function Jav
+  };
+  console.log("render end");
   return (
     <main className="container">
       <h2>Jav list</h2>
@@ -21,16 +23,21 @@ function Jav() {
           </tr>
         </thead>
         <tbody>
-          {javs.map((jav, index) => {
+          {javs.map((jav) => {
             return (
-              <tr key={index}>
+              <tr key={jav.id}>
                 <th scope="row">{jav.id}</th>
                 <td>{jav.name}</td>
                 <td>
                   <img src={jav.image} style={{ width: "100px" }} />
                 </td>
                 <td>
-                  <button className="btn btn-danger btn-sm">Delete</button>
+                  <button
+                    onClick={() => handleDeleteJav(jav.id)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             );
