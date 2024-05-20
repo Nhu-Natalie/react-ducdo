@@ -1,22 +1,25 @@
-import logo from "./logo.svg";
 import "./App.css";
-
-// // import tất cả
-// import * as constantAll from "./constants/constant";
-
-// console.log(constantAll);
-// // Lấy biến name
-// console.log(constantAll.name);
-
-// Dùng DESTRUCTURING
-import { name, job } from "./constants/constant";
-console.log(name);
-// Lấy biến name
-console.log(job);
+import { useState } from "react";
 
 function App() {
+  const [tags, setTags] = useState(["tag1", "tag2", "tag3"]);
+
+  const renderTags = function () {
+    const listTags = tags.map(function (tag) {
+      return <li>{tag}</li>;
+    });
+
+    return listTags;
+  };
+
   return (
     <div className="App">
+      {/* <ul>{renderTags()}</ul> */}
+      <ul>
+        {tags.map(function (tag) {
+          return <li key={tag}>{tag}</li>;
+        })}
+      </ul>
       <h1>Hello World</h1>
     </div>
   );
