@@ -9,10 +9,14 @@ function Jav() {
     const stateJavNew = javs.filter((jav) => jav.id !== id);
     setJavs(stateJavNew); // Rerender function Jav
   };
+
+  if (javs.length === 0) {
+    return <h2>Không có diễn viên nào để chọn</h2>;
+  }
   console.log("render end");
   return (
     <main className="container">
-      <h2>Jav list</h2>
+      <h2>Có {javs.length} diễn viên JAV để chọn</h2>
       <table className="table">
         <thead>
           <tr>
