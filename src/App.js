@@ -1,23 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
-
-// // import tất cả
-// import * as constantAll from "./constants/constant";
-
-// console.log(constantAll);
-// // Lấy biến name
-// console.log(constantAll.name);
-
-// Dùng DESTRUCTURING
-import { name, job } from "./constants/constant";
-console.log(name);
-// Lấy biến name
-console.log(job);
+import Child from "./component/Child";
+import { useState } from "react";
 
 function App() {
+  const [parentToChild, setParentToChild] = useState("parent to child");
   return (
     <div className="App">
       <h1>Hello World</h1>
+      <Child parentToChild={parentToChild} name="duc" />
+      {/* 
+      parentToChild={parentToChild}
+      key: value */}
     </div>
   );
 }
