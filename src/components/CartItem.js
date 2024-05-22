@@ -1,12 +1,24 @@
 function CartItem(props) {
-  const { cartItem } = props;
+  const { cartItem, onClickRemove } = props;
+
+  const handleClickRemove = (id) => {
+    onClickRemove(id);
+  };
+
   return (
     <article className="cart-item">
       <img src={cartItem.img} alt="" />
       <div>
         <h4>{cartItem.title}</h4>
         <h4 className="item-price">{cartItem.price}</h4>
-        <button className="remove-btn">remove</button>
+        <button
+          onClick={() => {
+            handleClickRemove(cartItem.id);
+          }}
+          className="remove-btn"
+        >
+          remove
+        </button>
       </div>
       <div>
         <button className="amount-btn">

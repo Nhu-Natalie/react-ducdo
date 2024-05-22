@@ -8,7 +8,15 @@ import cartList from "./service/cart";
 
 function App() {
   const [carts, setCarts] = useState(cartList);
-
+  const handleClickRemove = (id) => {
+    const newStateCart = carts.filter((cartItem) => {
+      if (cartItem.id !== id) {
+        return true;
+      }
+    });
+    console.log("newStateCart: ", newStateCart);
+    setCarts(newStateCart);
+  };
   // function cartTotal() {
   //   let cartTotal = 0;
   //   for (let i = 0; i < carts.length; i++) {
@@ -45,7 +53,7 @@ function App() {
         <header>
           <h2>your bag</h2>
         </header>
-        <CartList carts={carts} />
+        <CartList carts={carts} onClickRemove={handleClickRemove} />
         <FooterCart cartAmount={cartAmount} />
       </section>
     </main>
