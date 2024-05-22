@@ -8,6 +8,7 @@ import cartList from "./service/cart";
 
 function App() {
   const [carts, setCarts] = useState(cartList);
+  console.log("render start");
   const handleClickRemove = (id) => {
     const newStateCart = carts.filter((cartItem) => {
       if (cartItem.id !== id) {
@@ -45,6 +46,9 @@ function App() {
   }, 0);
 
   console.log("cartAmount: ", cartAmount);
+
+  console.dir(handleClickRemove);
+  console.log("render end");
 
   return (
     <main>
