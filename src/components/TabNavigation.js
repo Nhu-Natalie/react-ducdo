@@ -1,5 +1,4 @@
 function TabNavigation(props) {
-  console.log(props);
   const active = props.active;
   const setActiveTabFunc = props.activeFunc;
 

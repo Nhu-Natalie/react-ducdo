@@ -1,14 +1,26 @@
+import { useState, useEffect } from "react";
+
 import TabContent from "./TabContent";
 import TabNavigation from "./TabNavigation";
-import { useState } from "react";
+
+let i = 0;
 
 function Tab() {
+  i++;
   const [tabActive, setTabActive] = useState("react");
 
   const setActiveTabFunc = (tabActive) => {
     setTabActive(tabActive); // function Tab đc RENDER lại
     // console.log("tabActive changed to: ", tabActive);
   };
+
+  // useEffect(() => {}, [dependency]);
+
+  useEffect(() => {
+    // Luôn chạy khi state thay đổi và lần đầu render
+    console.log("useEffect running version 00" + i, tabActive);
+  }, [tabActive]);
+  // Nếu click vue -> tabActive(từ react --> vue )
 
   return (
     <div className="container">
