@@ -60,8 +60,7 @@ function App() {
   };
 
   const handleEmptyCart = () => {
-    const newStateCart = [];
-    setCarts(newStateCart);
+    setCarts([]);
   };
 
   // const handleClickRemove = (id) => {
