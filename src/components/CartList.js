@@ -1,17 +1,21 @@
 import CartItem from "./CartItem";
 
 function CartList(props) {
-  const { carts, onClickRemove } = props;
+  const { carts, onClickRemove, onClickAmountUp, onClickAmountDown } = props;
 
   function cartRenderList() {
     const cartListRender = carts.map((cartItem) => {
-      return (
-        <CartItem
-          key={cartItem.id}
-          cartItem={cartItem}
-          onClickRemove={onClickRemove}
-        />
-      );
+      if (cartItem.amount > 0) {
+        return (
+          <CartItem
+            key={cartItem.id}
+            cartItem={cartItem}
+            onClickRemove={onClickRemove}
+            onClickAmountUp={onClickAmountUp}
+            onClickAmountDown={onClickAmountDown}
+          />
+        );
+      }
     });
 
     console.log(cartListRender);
