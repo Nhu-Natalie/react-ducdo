@@ -2,6 +2,7 @@ import "./App.css";
 import CartList from "./components/CartList";
 import FooterCart from "./components/FooterCart";
 import NavBar from "./components/NavBar";
+import Test2 from "./components/Test2";
 
 import { useState } from "react";
 import cartList from "./service/cart";
@@ -141,6 +142,7 @@ function App() {
           cartAmount={cartAmount}
           onClickEmptyCart={handleEmptyCart}
         />
+        <Test2 />
       </section>
     </main>
   );
